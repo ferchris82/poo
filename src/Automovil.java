@@ -7,6 +7,9 @@ public class Automovil {
     private double cilindrada;
     private int capacidadEstanque = 40;
 
+    private static String colorPatente = "Naranja";
+    private static int capacidadEstanqueEstatico = 30;
+
     public Automovil(){
     }
 
@@ -70,11 +73,19 @@ public class Automovil {
         this.capacidadEstanque = capacidadEstanque;
     }
 
+    public static String getColorPatente(){
+        return colorPatente;
+    }
+
+    public static void setColorPatente(String colorPatente){
+        Automovil.colorPatente = colorPatente;
+    }
     //Funciones
     public String verDetalle(){
         return "auto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo() +
                 "\nauto.color = " + this.getColor() +
+                "\nauto.patenteColor = " + colorPatente +
                 "\nauto.cilindrada = " + this.getCilindrada();
     }
 
@@ -100,6 +111,10 @@ public class Automovil {
         return km/(capacidadEstanque*(porcentajeBencina/100f));
     }
 
+    public static float calcularConsumoEstatico(int km, int porcentajeBencina){
+        return km/(capacidadEstanqueEstatico * (porcentajeBencina/100f));
+    }
+
     @Override
     public boolean equals(Object obj) {
 
@@ -113,5 +128,16 @@ public class Automovil {
         return (this.fabricante != null && this.modelo != null
                 && this.fabricante.equals(a.getFabricante())
                 && this.modelo.equals(a.getModelo()));
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" +
+                "fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", color='" + color + '\'' +
+                ", cilindrada=" + cilindrada +
+                ", capacidadEstanque=" + capacidadEstanque +
+                '}';
     }
 }
