@@ -1,6 +1,8 @@
 public class Automovil {
 
     //Atributos
+
+    private int id;
     private String fabricante;
     private String modelo;
     private String color = "gris";
@@ -9,11 +11,17 @@ public class Automovil {
 
     private static String colorPatente = "Naranja";
     private static int capacidadEstanqueEstatico = 30;
+    private static int ultimoId;
+
+    public static final Integer VELOCIDAD_MAX_CARRETERA = 120;
+    public static final int VELOCIDAD_MAX_CIUDAD = 60;
 
     public Automovil(){
+        this.id = ++ultimoId;
     }
 
     public Automovil(String fabricante, String modelo){
+        this();
         this.fabricante = fabricante;
         this.modelo = modelo;
     }
@@ -31,6 +39,14 @@ public class Automovil {
     public Automovil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
         this(fabricante, modelo, color, cilindrada);
         this.capacidadEstanque = capacidadEstanque;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFabricante() {
@@ -80,9 +96,19 @@ public class Automovil {
     public static void setColorPatente(String colorPatente){
         Automovil.colorPatente = colorPatente;
     }
+
+    public static int getCapacidadEstanqueEstatico() {
+        return capacidadEstanqueEstatico;
+    }
+
+    public static void setCapacidadEstanqueEstatico(int capacidadEstanqueEstatico) {
+        Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
+    }
+
     //Funciones
     public String verDetalle(){
-        return "auto.fabricante = " + this.getFabricante() +
+        return  "auto.id = " + this.id +
+                "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo() +
                 "\nauto.color = " + this.getColor() +
                 "\nauto.patenteColor = " + colorPatente +
@@ -132,12 +158,6 @@ public class Automovil {
 
     @Override
     public String toString() {
-        return "Automovil{" +
-                "fabricante='" + fabricante + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", color='" + color + '\'' +
-                ", cilindrada=" + cilindrada +
-                ", capacidadEstanque=" + capacidadEstanque +
-                '}';
+        return this.id + " : " + fabricante + " " + modelo;
     }
 }
