@@ -1,5 +1,5 @@
 
-public class EjemploAutomovilStatic {
+public class EjemploAutomovilRelacionesObjetos {
     public static void main(String[] args) {
 
         Automovil.setCapacidadEstanqueEstatico(45);
