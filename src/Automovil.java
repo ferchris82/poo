@@ -10,6 +10,7 @@ public class Automovil {
     private Estanque estanque;
     private Persona conductor;
     private Rueda[] ruedas;
+    private int indiceRuedas;
 
     private TipoAutomovil tipo;
 
@@ -28,6 +29,7 @@ public class Automovil {
 
     public Automovil(){
         this.id = ++ultimoId;
+        this.ruedas = new Rueda[5];
     }
 
     public Automovil(String fabricante, String modelo){
@@ -148,19 +150,35 @@ public class Automovil {
         this.ruedas = ruedas;
     }
 
+    public Automovil addRueda(Rueda rueda){
+        if(indiceRuedas < this.ruedas.length) {
+            this.ruedas[indiceRuedas++] = rueda;
+        }
+        return this;
+    }
+
     //Funciones
     public String verDetalle(){
         String detalle = "auto.id = " + this.id +
                 "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo();
-            if(this.getTipo() != null) {
-                detalle += "\nauto.tipo = " + this.getTipo().getDescripcion();
-            }
-                detalle += "\nauto.color = " + this.color +
+        if(this.getTipo() != null) {
+            detalle += "\nauto.tipo = " + this.getTipo().getDescripcion();
+        }
+        detalle += "\nauto.color = " + this.color +
                 "\nauto.patenteColor = " + colorPatente;
-            if(this.motor != null) {
+        if(this.motor != null) {
                 detalle += "\nauto.cilindrada = " + this.motor.getCilindrada();
+        }
+
+        detalle += "\nConductor subaru:" + this.getConductor();
+
+        if(getRuedas() != null){
+            detalle += "\nRuedas del autómovil:";
+            for(Rueda r: this.getRuedas()){
+                detalle += "\n"+r.getFabricante() + ", aro: " + r.getAro() + ", ancho: " + r.getAncho();
             }
+        }
         return detalle;
     }
 
