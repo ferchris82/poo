@@ -1,4 +1,4 @@
-public class Automovil {
+public class Automovil implements Comparable<Automovil>{
 
     //Atributos
 
@@ -226,5 +226,10 @@ public class Automovil {
     @Override
     public String toString() {
         return this.id + " : " + fabricante + " " + modelo;
+    }
+
+    @Override
+    public int compareTo(Automovil a) {
+        return this.modelo.compareTo(a.fabricante);
     }
 }
