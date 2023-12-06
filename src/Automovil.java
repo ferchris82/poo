@@ -9,6 +9,8 @@ public class Automovil {
     private double cilindrada;
     private int capacidadEstanque = 40;
 
+    private TipoAutomovil tipo;
+
     private static Color colorPatente = Color.NARANJO;
     private static int capacidadEstanqueEstatico = 30;
     private static int ultimoId;
@@ -111,11 +113,20 @@ public class Automovil {
         Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
     }
 
+    public TipoAutomovil getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAutomovil tipo) {
+        this.tipo = tipo;
+    }
+
     //Funciones
     public String verDetalle(){
         return  "auto.id = " + this.id +
                 "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo() +
+                "\nauto.tipo = " + this.getTipo().getDescripcion() +
                 "\nauto.color = " + this.getColor() +
                 "\nauto.patenteColor = " + colorPatente +
                 "\nauto.cilindrada = " + this.getCilindrada();
